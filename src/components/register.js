@@ -14,6 +14,7 @@ const Register = () =>{
             const user = await createUserWithEmailAndPassword(auth,userEmail,userPass);
             if(user){
                 setEmsg('User created Successfully');
+                window.location.href = '/login';
             }
         }catch(error){
             console.log(error);
@@ -25,7 +26,7 @@ const Register = () =>{
         <form className="formContainer" onSubmit={register} style={formContainer}>
             <div className="row">
                 <div className="col-12" style={{marginBottom: '15px'}}>
-                    {emsg}
+                    <div className="text-center" style={{marginBottom: '10px'}}>{emsg}</div>
                     <h1 className="text-center">Register</h1>
                 </div>
                 <div className="col-12" style={{marginBottom: '15px'}}>

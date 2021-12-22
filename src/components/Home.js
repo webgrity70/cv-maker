@@ -7,7 +7,7 @@ function Home(){
 
             <p>With our online CV maker, it is simple for anyone to quickly create a professional resume. Enter your personal details and begin filling out your resume content. Finally, choose one of our 36 available resume layouts, and download your resume.</p>
 
-            <Link to="create-cv" className="btn">Create Your Resume</Link>
+            <Link to="login" className="btn">Start Creating Your Resume</Link>
             
         </div>
     )

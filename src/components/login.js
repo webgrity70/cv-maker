@@ -1,11 +1,16 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useEffect } from "react/cjs/react.development";
 import { auth } from "./firebase/firebase";
 
 const Login = () =>{
     const [userEmail,setUserEmail] = useState('')
     const [userPass, setUserPass] = useState('')
     const [emsg,setEmsg] = useState('');
+    const [isloggedin, setIsloggedIn] = useState(false);
+    const [loggedInDetails, setLoggedInDetails] = useState('');
+
 
 
     const login = async (e) =>{
@@ -14,7 +19,7 @@ const Login = () =>{
             const user = await signInWithEmailAndPassword(auth,userEmail,userPass);
             if(user){
                 console.log(auth.currentUser.email);
-                setEmsg(auth.currentUser.email);
+                //setEmsg(auth.currentUser.email);
             }
         }catch(error){
             console.log(error);
@@ -26,7 +31,7 @@ const Login = () =>{
         <form className="formContainer" onSubmit={login} style={formContainer}>
             <div className="row">
                 <div className="col-12" style={{marginBottom: '15px'}}>
-                {emsg}
+                    <div className="text-center" style={{marginBottom: '10px'}}>{emsg}</div>
                     <h1 className="text-center">Login</h1>
                 </div>
                 <div className="col-12" style={{marginBottom: '15px'}}>
@@ -36,7 +41,8 @@ const Login = () =>{
                     <input type="password" className="form-control" placeholder="Enter Password"  onChange={(event)=>{setUserPass(event.target.value)}} />
                 </div>
                 <div className="col-12 text-center">
-                    <button className="btn">Register</button>
+                    <button className="btn">Sig In</button>
+                    <p style={{marginTop: '20px'}}>Not have account? <Link to="/register">Register</Link></p>
                 </div>
             </div>
         </form>
